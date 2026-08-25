@@ -60,4 +60,4 @@ Frameworks like NIST CSF ([Section 03](../03-nist-csf-implementation/README.md))
 
 ---
 **Previous:** [← 06 — Incident Response Plan](../06-incident-response-plan/README.md)
-**Back to:** [Main README](../README.md)
+**Next:** [08 — Network Protocols & Segmentation →](../08-network-protocols-and-segmentation/README.md)

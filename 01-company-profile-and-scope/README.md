@@ -17,6 +17,18 @@ Before designing any security control, you need to understand *what* you're prot
 | Manufacturing Plant | Production lines for drugs & medical devices | Industrial control systems (PLCs, SCADA, HMIs) |
 | Clinical Trials Data Center | Stores patient trial data and results | Protected Health Information (PHI) |
 
+## Digital footprint & organizational scale
+
+Beyond its four physical sites, VitalCore operates **MyVitalCore Portal** — a public-facing web and mobile platform used by clinical trial participants to view appointments and results, by referring physicians to submit patient referrals, and by pharmacy partners to check drug supply status. The portal has grown to **over 100,000 registered external users**, making it a very different kind of asset to protect than an internal file share: it's internet-reachable, 24/7, and a single outage or breach is visible to people entirely outside the company.
+
+Supporting this — both the internal environment and the external portal — is a **50+ person IT & Security organization** (Network Engineering, Identity & Access Management, Security Operations/SOC, GRC & Compliance, and the CSIRT described in [Section 09](../09-csirt-and-incident-response/README.md)). This scale is what justifies the centralized **SIEM/SOAR platform** built in [Section 11](../11-siem-soar-implementation/README.md) — at this volume of users, systems, and staff, manually reviewing logs or coordinating incident response over email stops being viable.
+
+| Digital asset | Description | Zone |
+|---|---|---|
+| MyVitalCore Portal | Patient/HCP/pharmacy-facing web & mobile app | Public DMZ (see [Section 08](../08-network-protocols-and-segmentation/README.md)) |
+| Partner API Gateway | HL7/FHIR-based integration with physician EHR systems and pharmacy partners | Partner Extranet |
+| Remote Access VPN | Secure remote connectivity for the ~50-person distributed IT/Security team and traveling staff | Remote Access zone |
+
 ## Why this company is a good security case study
 
 VitalCore is deliberately designed to have **three very different risk profiles under one roof**, which is what makes network segmentation and least privilege so important here:
